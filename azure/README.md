@@ -9,3 +9,5 @@ Stages to complete
 - ResourceGroups - Create
 - Users - Create
 - Groups - Create
+
+https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104#manage-azure-identities-and-governance-2025

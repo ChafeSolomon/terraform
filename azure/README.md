@@ -10,4 +10,4 @@ Stages to complete
 - Users - Create
 - Groups - Create
 
-[Objectives]:https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104#manage-azure-identities-and-governance-2025
+[Objectives](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104#manage-azure-identities-and-governance-2025)

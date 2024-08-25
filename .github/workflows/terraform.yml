@@ -1,0 +1,47 @@
+name: terraform
+
+on:
+  push: 
+    branches: 
+    - "main"
+env:
+  ARM_SUBSCRIPTION_ID: "${{ secrets.SUBSCRIPTION_ID }}"
+  ARM_TENANT_ID: "${{ secrets.TENANT_ID }}"
+  ARM_CLIENT_ID: "${{ secrets.CLIENT_ID }}"
+  CONFIG_DIRECTORY: "./"
+  ARM_USE_CLI: "false"
+  ARM_USE_MSI: "true"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v4
+      
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.1.7"
+
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
+      
+      # Add a prompt to ask the user whether to apply or destroy changes
+      - name: Apply Terraform changes
+        run: terraform apply --auto-approve

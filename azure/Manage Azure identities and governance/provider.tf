@@ -5,10 +5,30 @@ terraform {
       source  = "hashicorp/azuread"
       version = "~> 2.15.0"
     }
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "4.0.1"
+    }
   }
+  backend "azurerm" {
+    resource_group_name  = "AZ104"
+    storage_account_name = "az104tfstate"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+}
+}
+
+# Configure the Azure Resource Manager Provider
+provider "azurerm" {
+  features {}
+  subscription_id = "b93af938-83cd-4507-8904-ab2541b44869"
 }
 
 # Configure the Azure Active Directory Provider
-provider "azuread" {
-  tenant_id = "00000000-0000-0000-0000-000000000000"
+provider "azuread"{}
+
+# Create project RG
+resource "azurerm_resource_group" "az104_rg" {
+  name     = "AZ104"
+  location = "eastus"
 }

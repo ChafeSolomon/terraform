@@ -18,11 +18,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
-      - name: troubleshoot
-        run: |
-          pwd
-          ls -la
       
       - uses: hashicorp/setup-terraform@v3
         with:
@@ -32,24 +27,24 @@ jobs:
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
-        working-directory: azure/Manage\ Azure\ identities\ and\ governance
+        working-directory: "terraform/azure/Manage Azure identities and governance"
 
       - name: Terraform Init
         id: init
         run: terraform init
-        working-directory: azure/Manage\ Azure\ identities\ and\ governance
+        working-directory: "terraform/azure/Manage Azure identities and governance"
 
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-        working-directory: azure/Manage\ Azure\ identities\ and\ governance
+        working-directory: "terraform/azure/Manage Azure identities and governance"
 
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
-        continue-on-error: false
-        working-directory: azure/Manage\ Azure\ identities\ and\ governance
+        continue-on-error: true
+        working-directory: "terraform/azure/Manage Azure identities and governance"
 
       - name: Apply Terraform changes
         run: terraform apply --auto-approve
-        working-directory: terraform/azure/Manage\ Azure\ identities\ and\ governance
+        working-directory: "terraform/azure/Manage Azure identities and governance"

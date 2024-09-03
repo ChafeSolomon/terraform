@@ -39,32 +39,9 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.1.7"
-          
-      - name: search
-        run: ls
-        
-      - name: Terraform fmt
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: true
-        working-directory: "azure/Manage Azure identities and governance"
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: |
+          terraform init
         working-directory: "azure/Manage Azure identities and governance"
-
-      - name: Terraform Validate
-        id: validate
-        run: terraform validate -no-color
-        working-directory: "azure/Manage Azure identities and governance"
-
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan -no-color
-        continue-on-error: true
-        working-directory: "azure/Manage Azure identities and governance"
-
-      - name: Apply Terraform changes
-        run: terraform apply --auto-approve
-        working-directory: "terraform/azure/Manage Azure identities and governance"

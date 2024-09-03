@@ -21,7 +21,6 @@ terraform {
 # Configure the Azure Resource Manager Provider
 provider "azurerm" {
   features {}
-  subscription_id = "b93af938-83cd-4507-8904-ab2541b44869"
 }
 
 # Configure the Azure Active Directory Provider

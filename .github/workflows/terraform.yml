@@ -22,17 +22,17 @@ jobs:
 
     steps:
 
-      - name: Log into Azure
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.CLIENT_ID }}
-          tenant-id: ${{ secrets.TENANT_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+     # - name: Log into Azure
+   #     uses: azure/login@v1
+    #    with:
+     #     client-id: ${{ secrets.CLIENT_ID }}
+      #    tenant-id: ${{ secrets.TENANT_ID }}
+       #   subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
           
-      - name: 'Run az commands'
-        run: |
-          az account show
-          az group list
+      # - name: 'Run az commands'
+      #  run: |
+      #    az account show
+      #    az group list
           
       - name: Checkout
         uses: actions/checkout@v4

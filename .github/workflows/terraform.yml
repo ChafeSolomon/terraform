@@ -10,6 +10,7 @@ env:
   CONFIG_DIRECTORY: "./"
   ARM_USE_CLI: "false"
   ARM_USE_MSI: "true"
+  ARM_USE_OIDC: "true"
   
 permissions:
   id-token: write # This is required for requesting the JWT

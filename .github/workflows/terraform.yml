@@ -40,3 +40,4 @@ jobs:
         id: apply
         run: | 
           terraform apply --auto-approve
+        working-directory: "azure/Manage Azure identities and governance"

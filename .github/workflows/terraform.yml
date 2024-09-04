@@ -22,18 +22,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-     # - name: Log into Azure
-   #     uses: azure/login@v1
-    #    with:
-     #     client-id: ${{ secrets.CLIENT_ID }}
-      #    tenant-id: ${{ secrets.TENANT_ID }}
-       #   subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
-          
-      # - name: 'Run az commands'
-      #  run: |
-      #    az account show
-      #    az group list
           
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,3 +35,8 @@ jobs:
         run: |
           terraform init
         working-directory: "azure/Manage Azure identities and governance"
+        
+      - name: Terraform Apply
+        id: apply
+        run: | 
+          terraform apply --auto-approve

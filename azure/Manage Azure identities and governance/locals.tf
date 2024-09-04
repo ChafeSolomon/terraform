@@ -1,10 +1,10 @@
 locals {
-  users       = fileset("${path.module}/data/users/", "*.json")
+  user_files = fileset(path.module, "data/users/*.json")
+  json_data  = [for f in local.user_files : jsondecode(file("${path.module}/${f}"))]
 }
 
-output names {
-  for_each = fileset(path.module, "data/users/*")
-  value       = local.users
+output name {
+  value       = "${local.json_data}"
   sensitive   = false
   description = "description"
   depends_on  = []

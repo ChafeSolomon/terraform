@@ -15,13 +15,11 @@ terraform {
     storage_account_name = "az104tfstate"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
-    use_oidc = true
 }
 }
 
 # Configure the Azure Resource Manager Provider
 provider "azurerm" {
-  use_oidc = true
   features {}
 }
 

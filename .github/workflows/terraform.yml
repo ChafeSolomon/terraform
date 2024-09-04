@@ -8,9 +8,9 @@ env:
   ARM_TENANT_ID: "${{ secrets.TENANT_ID }}"
   ARM_CLIENT_ID: "${{ secrets.CLIENT_ID }}"
   CONFIG_DIRECTORY: "./"
-  ARM_USE_OIDC: "true"
+  # ARM_USE_OIDC: "true"
   # ARM_USE_CLI: "false"
-  # ARM_USE_MSI: "true"
+  ARM_USE_MSI: "true"
   
 permissions:
   id-token: write # This is required for requesting the JWT
